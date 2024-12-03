@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        .post-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .sidebar,
+        .suggestion-section {
+            padding: 20px;
+        }
+
+        .container .col-lg-8 {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .filters-row {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .filters-row .story-image {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .filters-row .story-image img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .filters-row .story-image p {
+            font-size: 12px;
+            color: #000;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .Profile-img {
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .username {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Sidebar section-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-auto bg-light sticky-top">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                    <a href="https://iconscout.com/free-icon/instagram-61"
+                        class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <img src="instagram.svg" class="a" width="80px" alt="">
+                    </a>
+                    <ul
+                        class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                        <li class="nav-item d-flex align-items-center gap-2">
+                            <a href="#" class="nav-link d-flex align-items-center py-3 px-2" title="Home">
+                                <i class="fs-3 bi-house" style=" color: black;"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <!-- Search Icon -->
+                            <a href="#" class="nav-link py-3 px-2" title="" id="searchDropdownToggle" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-search fs-3" style="color: black;"></i>
+                            </a>
+
+                            <div class="dropdown-menu p-3" aria-labelledby="searchDropdownToggle"
+                                style="min-width: 300px;">
+
+                                <form>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Search..."
+                                            aria-label="Search">
+                                    </div>
+
+                                    <div>
+                                        <strong>Suggested:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><a href="#" class="text-decoration-none text-black">Wallpaper</a></li>
+                                            <li><a href="#" class="text-decoration-none text-black">Wallpaper</a></li>
+                                            <li><a href="#" class="text-decoration-none text-black">Wallpaper</a></li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Explore">
+                                <i class="bi-compass fs-4 text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Notification">
+                                <i class="bi-heart fs-4" style="color: black;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Reels">
+                                <i class="bi-camera-reels fs-4 text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Messages">
+                                <i class="bi-chat fs-4 text-black"></i>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="px-1 align-middle">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/woman-user-circle-icon.png"
+                                    alt="Messages" height="30">
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="dropdown">
+                        <a href="#"
+                            class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none"
+                            id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi-list fs-4 text-black"></i>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-9 col-12">
+                <div class="container mt-4">
+                    <!-- Stories section -->
+                    <div class="row py-3 filters-row d-flex flex-nowrap gap-2">
+                        <div class="col-3 text-center">
+                            <div class="story-image">
+                                <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                    alt="Story 1" class="img-fluid rounded-circle">
+                                <p>Your Story</p>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <div class="story-image">
+                                <img src="https://katalystlabs.pk/wp-content/uploads/2021/11/Sheba-Najmi-1024x1024.png"
+                                    alt="Story 2" class="img-fluid rounded-circle">
+                                <p>Sheba Najmi</p>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <div class="story-image">
+                                <img src="https://media.licdn.com/dms/image/v2/D4D03AQEsyzUuujULFA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1669794402931?e=2147483647&v=beta&t=soA3KEhkB3uxTEVYUuUYEmWgu-yYqsa70-brKm-kEuU"
+                                    alt="Story 3" class="img-fluid rounded-circle">
+                                <p>Jehan Ara</p>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <div class="story-image">
+                                <img src="https://www.libertybooks.com/image/cache/catalog/Irfan%20ul%20Haq1-300x300.png?q6"
+                                    alt="Story 3" class="img-fluid rounded-circle">
+                                <p>Irfan-Ul-Haq</p>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <div class="story-image">
+                                <img src="https://ginnasticarena.com/wp-content/uploads/2024/07/Dr-waseem-fitness.jpg.webp"
+                                    alt="Story 3" class="img-fluid rounded-circle">
+                                <p>Dr-Waseem</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Posts section -->
+                    <div class="container">
+                        <div class="row">
+                            <!-- Main content column -->
+                            <div class="col-lg-8 col-md-10 col-12 mx-auto">
+                                <!-- First post -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                                alt="Story 1" class="img-fluid rounded-circle Profile-img" width="40px"
+                                                height="40px">
+                                            <span class="ms-2 username">Sania Kousar</span>
+                                        </div>
+
+                                        <img src="https://i.pinimg.com/474x/08/1e/35/081e35145f8ddcbb5f5b43d89862ca65.jpg"
+                                            alt="Post Image" class="post-img">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Zara ShahJhan</h6>
+                                            <p class="card-text">Winter Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Second post -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                                alt="Story 1" class="img-fluid rounded-circle Profile-img" width="40px"
+                                                height="40px">
+                                            <span class="ms-2 username">Sania Kousar</span>
+                                        </div>
+                                        <img src="https://i.pinimg.com/736x/39/90/0d/39900d82bc774ecea5aafec5b05b02fe.jpg"
+                                            alt="Post Image" class="post-img">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Zara ShahJhan</h6>
+                                            <p class="card-text">Winter Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3rd post -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                                alt="Story 1" class="img-fluid rounded-circle Profile-img" width="40px"
+                                                height="40px">
+                                            <span class="ms-2 username">Sania Kousar</span>
+                                        </div>
+                                        <img src="https://i.pinimg.com/474x/08/76/5e/08765eba901f6f208888234929c5186f.jpg"
+                                            alt="Post Image" class="post-img">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Zara ShahJhan</h6>
+                                            <p class="card-text">Winter Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4th post -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                                alt="Story 1" class="img-fluid rounded-circle Profile-img" width="40px"
+                                                height="40px">
+                                            <span class="ms-2 username">Sania Kousar</span>
+                                        </div>
+                                        <img src="https://i.pinimg.com/474x/30/4c/26/304c266ca1035b8c567e0ff4965a387f.jpg"
+                                            alt="Post Image" class="post-img">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Post Title</h6>
+                                            <p class="card-text">Winter Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 5th post -->
+                                <div class="mb-4">
+                                    <div class="card">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://images.pexels.com/photos/19065036/pexels-photo-19065036/free-photo-of-anis.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                                alt="Story 1" class="img-fluid rounded-circle Profile-img" width="40px"
+                                                height="40px">
+                                            <span class="ms-2 username">Sania Kousar</span>
+                                        </div>
+                                        <img src="https://i.pinimg.com/474x/6b/7b/6c/6b7b6cc2d83cb0fda380ac3c40dcd53c.jpg"
+                                            alt="Post Image" class="post-img">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Zara ShahJhan</h6>
+                                            <p class="card-text">Winter Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            
+            <!-- Suggestions section-->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="container mt-4">
+                    <h6 class="mb-3">Suggestions for you</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="#" class="d-flex align-items-center text-decoration-none">
+                                <img src="https://images.pexels.com/photos/12203620/pexels-photo-12203620.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                    alt="User" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                <span class="text-dark">Caturo</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-flex align-items-center text-decoration-none">
+                                <img src="https://images.pexels.com/photos/6243241/pexels-photo-6243241.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                    alt="User" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                <span class="text-dark">Purrty</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-flex align-items-center text-decoration-none">
+                                <img src="https://i.pinimg.com/474x/16/d7/fe/16d7fe11ec93534fb2a05f846a87aa10.jpg"
+                                    alt="User" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                <span class="text-dark">LimeLight</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="d-flex align-items-center text-decoration-none">
+                                <img src="https://i.pinimg.com/474x/17/80/c0/1780c0830dca29daed3b5b539e237f91.jpg"
+                                    alt="User" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+                                <span class="text-dark">Ideas Pret</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>
